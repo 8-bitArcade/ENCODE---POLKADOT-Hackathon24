@@ -27,6 +27,9 @@ contract EBitTokenMinter {
     /// @notice Get the metadata URI for a certain tokenID
     mapping(uint256 => string) public tokenURI;
 
+    /// @notice Get the 8BitID for a certain tokenID
+    mapping(uint256 => string) public tokenEbitId;
+
     /// @notice Get the owner of a certain tokenID
     mapping(uint256 => address) public ownerOf;
 
@@ -96,13 +99,15 @@ contract EBitTokenMinter {
     /// @notice Mint a new Soulbound NFT to `to`
     /// @param to The recipient of the NFT
     /// @param metaURI The URL to the token metadata
-    function mint(address to, string calldata metaURI) public payable {
+    /// @param ebitId The URL to the token metadata
+    function mint(address to, string calldata metaURI, string calldata ebitId) public payable {
         unchecked {
             balanceOf[to]++;
         }
 
         ownerOf[nextTokenId] = to;
         tokenURI[nextTokenId] = metaURI;
+        tokenEbitId[nextTokenId] = ebitId;
 
         emit Transfer(address(0), to, nextTokenId++);
     }

@@ -64,20 +64,25 @@ describe("EBitTokenMinter contract", function () {
     // it should mean to the right address
     it("Should mint the right user", async function () {
         const metaURI = "http://example.com/token/1";
+        const ebitId = "id_example_1";
+
         const { hardhatToken, owner, addr1 } = await loadFixture(deployTokenFixture);
         
-        const result = await hardhatToken.mint(addr1, metaURI);
+        const result = await hardhatToken.mint(addr1, metaURI, ebitId);
 
         expect(await hardhatToken.ownerOf(1)).to.equal(addr1.address);
         expect(await hardhatToken.balanceOf(addr1.address)).to.equal(1);
         expect(await hardhatToken.tokenURI(1)).to.equal(metaURI);
+        expect(await hardhatToken.tokenEbitId(1)).to.equal(ebitId);
     })
 
     it("Should fail when the user tries to transfer it to addr2", async function () {
         const metaURI = "http://example.com/token/1";
+        const ebitId = "id_example_1";
+
         const { hardhatToken, owner, addr1, addr2 } = await loadFixture(deployTokenFixture);
         
-        const result = await hardhatToken.mint(addr1, metaURI);
+        const result = await hardhatToken.mint(addr1, metaURI, ebitId);
 
         await expect(
             hardhatToken.connect(addr1).transferFrom(addr1.address, addr2.address, 1)
