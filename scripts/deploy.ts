@@ -5,7 +5,7 @@ async function main() {
 
   console.log("Deploying contracts with the account:", deployer.address);
 
-  const token = await ethers.deployContract("EBitTokenMinter");
+  const token = await ethers.deployContract("EightBitToken");
 
   console.log("Token address:", await token.getAddress());
 }
