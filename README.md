@@ -21,3 +21,7 @@ Moonbeam was the main platform that was used to build this application. Moonbeam
 To summarize, the process of using 8Bit Arcade involves creating Decentralized Identities (DIDs) for new users, issuing Soulbound tokens that are connected to their Ethereum addresses, and integrating with cryptocurrency wallets to improve privacy and ownership verification.
 
 In the future 8Bit Arcade will be developing a blockchain architectural solution that will enable a seamless user experience on one platform. The DiD will play a big part in helping overcome some of the obstacles that are currently experienced by gamers in the web3 space.
+
+![Alt text](8-BIT_ARCADE._1.webp)
+
+![Alt text](8bitScreenshot_172.webp)
