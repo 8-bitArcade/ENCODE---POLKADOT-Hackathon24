@@ -1,18 +1,23 @@
 import { ethers } from "hardhat";
 
 async function main() {
+  // const currentTimestampInSeconds = Math.round(Date.now() / 1000);
   const [deployer] = await ethers.getSigners();
+  console.log("Deploying EightBitToken contract with the deployer:", deployer.address);
+  const initialOwner = deployer.address;
 
-  console.log("Deploying contracts with the account:", deployer.address);
+  const eightBitToken = await ethers.deployContract("EightBitToken", [initialOwner], {
+  });
 
-  const token = await ethers.deployContract("EightBitToken");
+  await eightBitToken.waitForDeployment();
 
-  console.log("Token address:", await token.getAddress());
+  console.log( "deployed to:", eightBitToken.target
+  );
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+// We recommend this pattern to be able to use async/await everywhere
+// and properly handle errors.
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
